@@ -1,0 +1,52 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://CustomButtons.gd" type="Script" id=2]
+[ext_resource path="res://TextureButton.gd" type="Script" id=3]
+
+[node name="CustomButtons" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 349.0
+margin_top = 217.0
+margin_right = 413.0
+margin_bottom = 281.0
+texture_normal = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 497.0
+margin_top = 213.0
+margin_right = 561.0
+margin_bottom = 277.0
+texture_normal = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+margin_left = 353.0
+margin_top = 370.0
+margin_right = 417.0
+margin_bottom = 434.0
+texture_normal = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+margin_left = 492.0
+margin_top = 371.0
+margin_right = 556.0
+margin_bottom = 435.0
+texture_normal = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
