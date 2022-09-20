@@ -2,7 +2,7 @@
 # https://www.youtube.com/channel/UC8G8IEsYtIkj2hxfnRWhkuQ
 extends TextureButton
 
-
+export var letter : String = ""
 var has_exec = false
 var mouseover = false
 var is_selected = false

@@ -32,6 +32,10 @@ func displayOverlayDebugging():
 	overlay.add_stat("is_backtracking 3 ", $CustomButtons/TextureButton3, "is_backtracking", false)
 	overlay.add_stat("is_backtracking 4 ", $CustomButtons/TextureButton4, "is_backtracking", false)
 	
+	overlay.add_stat("", "", "", false)
+	
+	overlay.add_stat("word_dragged", $CustomButtons, "word_dragged", false)
+	
 	add_child(overlay)
 	
 	
@@ -68,6 +72,9 @@ func lineFunction():
 			$Line2D.set_point_position($Line2D.get_point_count()-2, buttonCenter())
 #			set the button is selected to true
 			get_button_over_itself().is_selected = true
+#			push the button letter to the front of the drag word array stack
+			$CustomButtons.word_dragged.push_back(get_button_over_itself().letter)
+		
 		
 		# this is for the backtracking
 #		first check that there is a maximum of 2 line
@@ -75,33 +82,46 @@ func lineFunction():
 #			check if the currently hovered button's coord is the same as the second to the last line coord; this is to check if
 #			we are in the motion of undoing our stroke 
 			if (buttonCenter() == $Line2D.get_point_position($Line2D.get_point_count()-2)): 	# and get_button_over_itself().is_selected:
-#				then confirm that the button.gd script says that we are going over 
+#				then confirm that the button.gd script says that we are going over an already selected button
 				if get_button_over_itself().is_backtracking:
+#					remove the line point: at the second to lasttt
+#					then set it to not selected
 					$Line2D.remove_point($Line2D.get_point_count()-2)
 					get_button_over_itself().is_selected = false
-		
+#					pop out the back letter if its backtracking
+					$CustomButtons.word_dragged.pop_back()
+#					
 #		make sure that there are line points in line2D
 		if $Line2D.get_point_count() > 0:
 #			this will be the last line point that will be following the mouse
 			$Line2D.set_point_position($Line2D.get_point_count()-1, get_global_mouse_position())
 	else:
-#		if you release the mouse, the whole line2D is cleared
+#		if you release the mouse and flag = true, the whole line2D is cleared
 		if delete_all_line_flag:
 			$Line2D.clear_points()
+#		finally to clear the word dragged array if we release the mouse button
+		$CustomButtons.word_dragged.clear()
+			
+#	this is to make sure that the word_dragged array size is not exceeded
+	if $CustomButtons.word_dragged.size() <= $CustomButtons.get_child_count():
+		pass
+	else:
+		 $CustomButtons.word_dragged.pop_front()
+
+func outputWord():
+	$Label.text = PoolStringArray($CustomButtons.word_dragged).join("")
 
 func _draw():
 	for i in $Line2D.get_point_count():
-#		print("drawing cirlces")
 		var default_font = Control.new().get_font("font")
 #		draw_string(default_font, $Line2D.get_point_position(i), "            " + str($Line2D.get_point_position(i).round()))
 		draw_string(default_font, $Line2D.get_point_position(i), "             \n\n\n" + str(i))
 		draw_circle($Line2D.get_point_position(i), 40.0, Color.red)
-	
-#	print("drawing end")
 		
 
 
 func _process(delta):
 	lineFunction()
+	outputWord()
 	update()
 	

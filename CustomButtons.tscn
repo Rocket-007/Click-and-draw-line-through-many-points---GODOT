@@ -17,6 +17,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+letter = "b"
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 margin_left = 497.0
@@ -28,6 +29,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+letter = "t"
 
 [node name="TextureButton3" type="TextureButton" parent="."]
 margin_left = 353.0
@@ -39,6 +41,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+letter = "a"
 
 [node name="TextureButton4" type="TextureButton" parent="."]
 margin_left = 492.0
@@ -50,3 +53,4 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+letter = "g"
