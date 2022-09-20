@@ -5,7 +5,8 @@ extends TextureButton
 
 var has_exec = false
 var mouseover = false
-
+var is_selected = false
+var is_backtracking = false
 
 func _ready():
 	connect("button_down", self, "_on_TextureButtons_down")
@@ -19,6 +20,10 @@ func _on_TextureButtons_down():
 
 func _on_TextureButtons_up():
 	get_parent().Touching = false
+#	this should set all the button is selected to false if we release
+	for v in get_parent().get_children():
+		v.is_selected = false
+		v.is_backtracking = false
 
 
 func checkHover():
@@ -27,10 +32,13 @@ func checkHover():
 		if !has_exec:
 			has_exec = true
 			mouseover = true
-			get_parent().readyToAddLine = true
+			if !is_selected:
+				if !is_backtracking:
+					get_parent().readyToAddLine = true
 	else:
 		has_exec = false
 		mouseover = false
+		is_backtracking = false
 		pass
 
 
