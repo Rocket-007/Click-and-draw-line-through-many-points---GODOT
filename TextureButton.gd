@@ -29,12 +29,16 @@ func _on_TextureButtons_up():
 func checkHover():
 	var mousepos = get_viewport().get_mouse_position()
 	if get_global_rect().has_point(mousepos):
+#		the first time you hover, this is not executed, its then the second time
 		if !has_exec:
 			has_exec = true
 			mouseover = true
-			if !is_selected:
-				if !is_backtracking:
-					get_parent().readyToAddLine = true
+#			check that the button has been selected before
+			if is_selected:
+#				then say that it is back tracked if it is hovered again
+				is_backtracking = true
+			else:
+				get_parent().readyToAddLine = true
 	else:
 		has_exec = false
 		mouseover = false

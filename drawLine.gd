@@ -69,15 +69,16 @@ func lineFunction():
 #			set the button is selected to true
 			get_button_over_itself().is_selected = true
 		
+		# this is for the backtracking
+#		first check that there is a maximum of 2 line
 		if $Line2D.get_point_count() > 2:
-#			print( buttonCenter()," ", $Line2D.get_point_position($Line2D.get_point_count()-2))
-			if true or get_button_over_itself().is_backtracking: #get_button_over_itself().is_selected
-				if (buttonCenter() == $Line2D.get_point_position($Line2D.get_point_count()-1)):
-					print("time to backtrack")
-#					$Line2D.remove_point($Line2D.get_point_count()-2)
-					print("point removed for backtracking")
-#					get_button_over_itself().is_backtracking = true
-#					get_button_over_itself().is_selected = false
+#			check if the currently hovered button's coord is the same as the second to the last line coord; this is to check if
+#			we are in the motion of undoing our stroke 
+			if (buttonCenter() == $Line2D.get_point_position($Line2D.get_point_count()-2)): 	# and get_button_over_itself().is_selected:
+#				then confirm that the button.gd script says that we are going over 
+				if get_button_over_itself().is_backtracking:
+					$Line2D.remove_point($Line2D.get_point_count()-2)
+					get_button_over_itself().is_selected = false
 		
 #		make sure that there are line points in line2D
 		if $Line2D.get_point_count() > 0:
@@ -90,12 +91,13 @@ func lineFunction():
 
 func _draw():
 	for i in $Line2D.get_point_count():
-		print("drawing cirlces")
-		draw_circle($Line2D.get_point_position(i), 50.0, Color.red)
-	var default_font = Control.new().get_font("font")
-	draw_string(default_font, Vector2(64, 64), "Hello world")
-
-	print("drawing end")
+#		print("drawing cirlces")
+		var default_font = Control.new().get_font("font")
+#		draw_string(default_font, $Line2D.get_point_position(i), "            " + str($Line2D.get_point_position(i).round()))
+		draw_string(default_font, $Line2D.get_point_position(i), "             \n\n\n" + str(i))
+		draw_circle($Line2D.get_point_position(i), 40.0, Color.red)
+	
+#	print("drawing end")
 		
 
 
