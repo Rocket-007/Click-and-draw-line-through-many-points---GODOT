@@ -54,3 +54,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 letter = "g"
+
+[node name="TextureButton5" type="TextureButton" parent="."]
+margin_left = 436.0
+margin_top = 294.0
+margin_right = 500.0
+margin_bottom = 358.0
+texture_normal = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+letter = "i"

@@ -45,17 +45,20 @@ func _ready():
 	displayOverlayDebugging()
 	pass
 	
-func buttonCenter():
+
 #	fuction to get the hovered over button's center
+func buttonCenter():
 	for v in $CustomButtons.get_children():
 		if v.mouseover:
 			return v.get_global_rect().get_center()
 
+#much like the buttonCenter() but this time returns the object 
 func get_button_over_itself():
 	for v in $CustomButtons.get_children():
 		if v.mouseover:
 			return v
 
+#actually this does more than just drawing the line
 func lineFunction():
 #	check if we Pressed down on the first button
 	if $CustomButtons.Touching == true:
@@ -109,11 +112,12 @@ func lineFunction():
 	else:
 		 $CustomButtons.word_dragged.pop_front()
 
-func outputWord():
 #	this will set the labesls text to the array to string form
+func outputWord():
 	$Label.text = PoolStringArray($CustomButtons.word_dragged).join("")
 
-func _draw():
+#also for debug purpose
+func _draw1():
 	for i in $Line2D.get_point_count():
 		var default_font = Control.new().get_font("font")
 		draw_string(default_font, $Line2D.get_point_position(i), "            " + str($Line2D.get_point_position(i).round()))

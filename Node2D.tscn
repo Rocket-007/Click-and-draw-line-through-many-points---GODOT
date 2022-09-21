@@ -14,3 +14,4 @@ default_color = Color( 0.109804, 0.941176, 0.278431, 1 )
 position = Vector2( 7, 138 )
 
 [node name="Label" parent="." instance=ExtResource( 1 )]
+text = "example"
