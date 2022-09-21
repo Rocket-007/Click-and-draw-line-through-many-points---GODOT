@@ -8,7 +8,19 @@ var mouseover = false
 var is_selected = false
 var is_backtracking = false
 
+
+
+
+
 func _ready():
+	
+#	loading in label for the buttons
+#	var label = load("res://label.tscn").instance()
+#	label.text = letter
+##	label.set_position().set_global_position() = get_global_rect().get_global_position()
+##	label.rect_global_position = rect_global_position
+#	add_child(label)
+	
 	connect("button_down", self, "_on_TextureButtons_down")
 	connect("button_up", self, "_on_TextureButtons_up")
 	

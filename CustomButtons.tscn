@@ -17,7 +17,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-letter = "b"
+letter = "e"
 
 [node name="TextureButton2" type="TextureButton" parent="."]
 margin_left = 497.0
@@ -29,7 +29,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-letter = "t"
+letter = "m"
 
 [node name="TextureButton3" type="TextureButton" parent="."]
 margin_left = 353.0

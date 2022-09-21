@@ -9,6 +9,7 @@ var delete_all_line_flag = true
 
 func displayOverlayDebugging():
 	var overlay = load("res://debug_overlay.tscn").instance()
+	overlay.add_stat("Custom Button children NO. ", $CustomButtons, "get_child_count", true)
 	overlay.add_stat("Line2d Count ", $Line2D, "get_point_count", true)
 	
 	overlay.add_stat("ON BUTTONS 1 ", $CustomButtons/TextureButton, "mouseover", false)
@@ -109,14 +110,19 @@ func lineFunction():
 		 $CustomButtons.word_dragged.pop_front()
 
 func outputWord():
+#	this will set the labesls text to the array to string form
 	$Label.text = PoolStringArray($CustomButtons.word_dragged).join("")
 
 func _draw():
 	for i in $Line2D.get_point_count():
 		var default_font = Control.new().get_font("font")
-#		draw_string(default_font, $Line2D.get_point_position(i), "            " + str($Line2D.get_point_position(i).round()))
-		draw_string(default_font, $Line2D.get_point_position(i), "             \n\n\n" + str(i))
+		draw_string(default_font, $Line2D.get_point_position(i), "            " + str($Line2D.get_point_position(i).round()))
+#		draw_string(default_font, $Line2D.get_point_position(i), "             \n\n\n" + str(i))
 		draw_circle($Line2D.get_point_position(i), 40.0, Color.red)
+#		$Label.rect_global_position
+		for v in $CustomButtons.get_children():
+#			draw_circle(v.rect_global_position, 45.0, Color.yellow)
+			pass
 		
 
 
