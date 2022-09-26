@@ -8,10 +8,12 @@
 script = ExtResource( 2 )
 
 [node name="Line2D" type="Line2D" parent="."]
-default_color = Color( 0.109804, 0.941176, 0.278431, 1 )
+default_color = Color( 0, 0.74902, 0.858824, 1 )
 
 [node name="CustomButtons" parent="." instance=ExtResource( 4 )]
 position = Vector2( 7, 138 )
 
 [node name="Label" parent="." instance=ExtResource( 1 )]
+margin_left = 155.0
+margin_right = 492.0
 text = "example"

@@ -65,19 +65,21 @@ func lineFunction():
 #		check when we are to add new Line2D Point : 
 #		ie : hover over any butten including first pressed button
 		if $CustomButtons.readyToAddLine == true:
-#			is the line point counts 0 |ie: is there no line then
-			if $Line2D.get_point_count() == 0:
-#				then create line point at last(basically first) position
+#			make sure buttoncenter returns vectors and not nulll when called
+			if buttonCenter():
+	#			is the line point counts 0 |ie: is there no line then
+				if $Line2D.get_point_count() == 0:
+	#				then create line point at last(basically first) position
+					$Line2D.add_point(buttonCenter(),-1)
+	#			add new point at the center of hovered button 
+	#			(this line point will later be the constantly moving line when we drag) 
 				$Line2D.add_point(buttonCenter(),-1)
-#			add new point at the center of hovered button 
-#			(this line point will later be the constantly moving line when we drag) 
-			$Line2D.add_point(buttonCenter(),-1)
-#			reposition/set the position of 2nd last line point to center of hovered button
-			$Line2D.set_point_position($Line2D.get_point_count()-2, buttonCenter())
-#			set the button is selected to true
-			get_button_over_itself().is_selected = true
-#			push the button letter to the front of the drag word array stack
-			$CustomButtons.word_dragged.push_back(get_button_over_itself().letter)
+	#			reposition/set the position of 2nd last line point to center of hovered button
+				$Line2D.set_point_position($Line2D.get_point_count()-2, buttonCenter())
+	#			set the button is selected to true
+				get_button_over_itself().is_selected = true
+	#			push the button letter to the front of the drag word array stack
+				$CustomButtons.word_dragged.push_back(get_button_over_itself().letter)
 		
 		
 		# this is for the backtracking

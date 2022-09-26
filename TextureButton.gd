@@ -32,10 +32,12 @@ func _on_TextureButtons_down():
 
 func _on_TextureButtons_up():
 	get_parent().Touching = false
+	mouseover = false
 #	this should set all the button is selected to false if we release
 	for v in get_parent().get_children():
 		v.is_selected = false
-		v.is_backtracking = false
+#		am just gonna comment this and see what happens
+#		v.is_backtracking = false
 
 
 func checkHover():
@@ -57,6 +59,24 @@ func checkHover():
 		is_backtracking = false
 		pass
 
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			pass
+#			get_parent().readyToAddLine = true
+		else:
+#			so we can check again if the same button was pressed on android;
+			has_exec = false
+			for v in get_parent().get_children():
+#				v.is_selected = false
+#				v.is_backtracking = false
+				v.mouseover = false
+#			get_parent().Touching = false
+
 
 func _process(delta):
-	checkHover()
+#	because of mobile compatability i have only update the check hovered buttons only
+#	when the first button is pressed down
+	if get_parent().Touching:
+		checkHover()
+	

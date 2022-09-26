@@ -38,14 +38,29 @@ func _ready():
 #		finally we can set the z index of the node with will in turn affect the label child in it
 		node_container.set_z_index(1)
 
-
+#
+#func _input(event):
+#	if event is InputEventMouseButton:
+#		if event.pressed:
+#			print("screen touched")
+#		else:
+#			Touching = false
+#	if event is InputEventScreenDrag:
+#		print("screendrag")
+			
 func _process(delta):
 	readyToAddLine = false
 #	update()
+	if !Touching:
+		for v in get_children():
+#			v.mouseover = false
+			pass
 #
 #
-#func _draw():
+func _draw():
 #	for v in get_children():
-#		draw_circle(v.rect_position, 45.0, Color.yellow)
-#		pass
-
+#		if v.get_child(0):
+#			draw_circle(v.get_child(0).get_child(0).rect_global_position, 45.0, Color.yellow)
+#			var default_font = Control.new().get_font("font")
+#			draw_string(default_font, v.get_child(0).get_child(0).rect_global_position,v.get_child(0).get_child(0).text)
+	pass
